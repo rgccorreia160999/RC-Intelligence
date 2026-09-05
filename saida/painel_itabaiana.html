@@ -1,0 +1,229 @@
+<title>Desafio Pratic Leve Itabaiana</title>
+
+<style>
+.pn {
+  color-scheme: light;
+  --surface-0: #f4f3f0;
+  --surface-1: #fcfcfb;
+  --surface-2: #eceae5;
+  --border:    #dcdad3;
+  --text-1:    #0b0b0b;
+  --text-2:    #52514e;
+  --text-3:    #86847d;
+  --azul:      #2a78d6;
+  --azul-fraco:#cde2fb;
+  --laranja:   #eb6834;
+  --laranja-fraco:#fbe0d4;
+  --ouro:      #eda100;
+  --bom:       #1baf7a;
+  --alerta:    #e34948;
+  --radius: 10px;
+  background: var(--surface-0);
+  color: var(--text-1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .pn {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --surface-2: #232322;
+    --border:    #34342f;
+    --text-1:    #ffffff;
+    --text-2:    #c3c2b7;
+    --text-3:    #8f8e85;
+    --azul:      #3987e5;
+    --azul-fraco:#184f95;
+    --laranja:   #d95926;
+    --laranja-fraco:#6b2a10;
+    --ouro:      #c98500;
+    --bom:       #199e70;
+    --alerta:    #e66767;
+  }
+}
+:root[data-theme="dark"] .pn {
+  color-scheme: dark;
+  --surface-0: #121211;
+  --surface-1: #1a1a19;
+  --surface-2: #232322;
+  --border:    #34342f;
+  --text-1:    #ffffff;
+  --text-2:    #c3c2b7;
+  --text-3:    #8f8e85;
+  --azul:      #3987e5;
+  --azul-fraco:#184f95;
+  --laranja:   #d95926;
+  --laranja-fraco:#6b2a10;
+  --ouro:      #c98500;
+  --bom:       #199e70;
+  --alerta:    #e66767;
+}
+
+.pn * { box-sizing: border-box; }
+.pn-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
+
+/* ---------- cabecalho ---------- */
+.pn-hero {
+  background: linear-gradient(135deg, var(--azul) 0%, #1c5cab 100%);
+  border-radius: var(--radius);
+  padding: 30px 30px 26px;
+  color: #fff;
+  margin-bottom: 26px;
+}
+.pn-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .82; margin: 0 0 8px; font-weight: 600; }
+.pn-hero h1 { margin: 0 0 6px; font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+.pn-hero .pn-sub { margin: 0; font-size: 15px; opacity: .9; }
+.pn-premio-tag {
+  display: inline-block; margin-top: 16px; padding: 8px 15px;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 100px; font-size: 14px; font-weight: 600;
+}
+
+/* ---------- blocos ---------- */
+.pn-sec { margin-bottom: 34px; }
+.pn-sec > h2 {
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-3); margin: 0 0 4px; font-weight: 700;
+}
+.pn-sec > .pn-lead { margin: 0 0 16px; color: var(--text-2); font-size: 14px; }
+
+.pn-card {
+  background: var(--surface-1); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+}
+
+/* ---------- metas ---------- */
+.pn-metas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.pn-meta { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.pn-meta-rot { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); font-weight: 600; margin-bottom: 12px; }
+.pn-meta-de { font-size: 13px; color: var(--text-2); }
+.pn-meta-de b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-1); }
+.pn-meta-para { font-size: 27px; font-weight: 700; letter-spacing: -.02em; color: var(--laranja); font-variant-numeric: tabular-nums; margin: 2px 0 3px; }
+.pn-meta-delta { font-size: 13px; color: var(--text-2); }
+
+/* ---------- barras ---------- */
+.pn-tabela { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pn-tabela th {
+  text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--text-3); font-weight: 700; padding: 0 10px 9px; border-bottom: 1px solid var(--border);
+}
+.pn-tabela th.num, .pn-tabela td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.pn-tabela td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.pn-tabela tr:last-child td { border-bottom: none; }
+.pn-pos { font-weight: 700; color: var(--text-3); width: 34px; font-variant-numeric: tabular-nums; }
+.pn-pos.top { color: var(--ouro); }
+.pn-nome { font-weight: 600; }
+.pn-eq { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; }
+
+.pn-barra-cel { width: 34%; min-width: 130px; }
+.pn-barra { background: var(--surface-2); border-radius: 4px; height: 16px; overflow: hidden; }
+.pn-barra > span { display: block; height: 100%; border-radius: 4px; background: var(--azul); }
+.pn-barra.laranja > span { background: var(--laranja); }
+
+/* barra de positivacao com marca de meta */
+.pn-pos-wrap { position: relative; }
+.pn-meta-marca {
+  position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--laranja);
+}
+.pn-meta-marca::after {
+  content: ""; position: absolute; top: -4px; left: -3px;
+  border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--laranja);
+}
+
+.pn-legenda { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; font-size: 13px; color: var(--text-2); }
+.pn-legenda span { display: inline-flex; align-items: center; gap: 7px; }
+.pn-chip { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+
+.pn-tag { display: inline-block; padding: 2px 8px; border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+.pn-tag.ok { background: var(--azul-fraco); color: var(--azul); }
+.pn-tag.no { background: var(--surface-2); color: var(--text-3); }
+:root[data-theme="dark"] .pn .pn-tag.ok, .pn .pn-tag.ok { }
+.pn-abc { display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 5px; font-size: 11px; font-weight: 700; }
+.pn-abc.A { background: var(--azul-fraco); color: var(--azul); }
+.pn-abc.B { background: var(--surface-2); color: var(--text-2); }
+.pn-abc.C { background: var(--laranja-fraco); color: var(--laranja); }
+.pn-pts { font-weight: 700; color: var(--laranja); font-variant-numeric: tabular-nums; }
+
+/* ---------- premiacao ---------- */
+.pn-premios { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.pn-premio { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
+.pn-premio.destaque { border-color: var(--ouro); border-width: 2px; }
+.pn-premio h3 { margin: 0 0 6px; font-size: 15px; font-weight: 700; }
+.pn-premio p { margin: 0; font-size: 14px; color: var(--text-2); }
+
+/* ---------- regras ---------- */
+.pn-regras { list-style: none; padding: 0; margin: 0; }
+.pn-regras li { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+.pn-regras li:last-child { border-bottom: none; }
+.pn-regras .pn-val { flex: none; min-width: 92px; font-weight: 700; color: var(--azul); font-variant-numeric: tabular-nums; }
+
+.pn-nota {
+  background: var(--surface-2); border-left: 3px solid var(--laranja);
+  border-radius: 0 var(--radius) var(--radius) 0; padding: 15px 18px; font-size: 14px; color: var(--text-2);
+}
+.pn-nota b { color: var(--text-1); }
+.pn-rodape { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-3); }
+
+.pn-scroll { overflow-x: auto; }
+@media (max-width: 620px) {
+  .pn-hero { padding: 24px 20px; }
+  .pn-hero h1 { font-size: 24px; }
+  .pn-barra-cel { display: none; }
+}
+</style>
+
+<div class="pn"><div class="pn-wrap">
+
+  <div class="pn-hero">
+    <p class="pn-kicker">RC Representações &middot; Pratic Leve &middot; Distribuidora Itabaiana</p>
+    <h1>Desafio Pratic Leve - Itabaiana 2026/2027</h1>
+    <p class="pn-sub">Campanha de 01/10/2026 a 31/01/2027 &middot; apuração em Fevereiro/2027 &middot; 16 vendedores &middot; 1440 clientes na carteira</p>
+    <div class="pn-premio-tag">Prêmio: resort all inclusive, com acompanhante, para os campeões</div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>Onde estamos e onde queremos chegar</h2>
+    <p class="pn-lead">Base apurada no painel de vendas da distribuidora. As metas são o alvo de cada mês da campanha.</p>
+    <div class="pn-metas"><div class="pn-meta"><div class="pn-meta-rot">Faturamento / mês</div><div class="pn-meta-de">hoje <b>R$ 343.539,58</b></div><div class="pn-meta-para">R$ 412.247,50</div><div class="pn-meta-delta">+20%  ·  R$ 68.707,92 a mais por mês</div></div><div class="pn-meta"><div class="pn-meta-rot">Volume / mês</div><div class="pn-meta-de">hoje <b>5.520 CX</b></div><div class="pn-meta-para">6.624 CX</div><div class="pn-meta-delta">+20%  ·  1.104 caixas a mais</div></div><div class="pn-meta"><div class="pn-meta-rot">Positivação da carteira</div><div class="pn-meta-de">hoje <b>27,6%</b></div><div class="pn-meta-para">45%</div><div class="pn-meta-delta">398 para 648 clientes  ·  +250 a positivar</div></div><div class="pn-meta"><div class="pn-meta-rot">Carteira ativa</div><div class="pn-meta-de">hoje <b>1440 clientes</b></div><div class="pn-meta-para">16 RCAs</div><div class="pn-meta-delta">média de 90 clientes por vendedor</div></div></div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>A conta da campanha</h2>
+    <p class="pn-lead">Pontua quem vende mix, não quem vende volume. O peso está no produto difícil e no cliente novo.</p>
+    <div class="pn-card"><ul class="pn-regras"><li><span class="pn-val">1 a 10 pts</span><span>Por caixa vendida, conforme a tabela de pontos do SKU. Quanto mais difícil o giro, mais vale.</span></li><li><span class="pn-val">50 pts</span><span>Por cliente positivado no mês (cliente que comprou pelo menos um item Pratic Leve).</span></li><li><span class="pn-val">+500 pts</span><span>Bônus por mês em que o vendedor atingir 45% de positivação da sua carteira.</span></li><li><span class="pn-val">+100 pts</span><span>Por cliente que levar 4 ou mais SKUs diferentes no mês.</span></li><li><span class="pn-val">+150 pts</span><span>Por cliente positivado na linha Pipoca, que é o lançamento da campanha.</span></li><li><span class="pn-val">Corte</span><span>Só concorre ao prêmio máximo quem fechar o período com no mínimo 40% de positivação média da carteira.</span></li></ul></div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>Tabela de pontos por produto</h2>
+    <p class="pn-lead">Curva A gira sozinha e vale pouco. Pipoca e as rústicas maiores são onde a campanha se ganha.</p>
+    <div class="pn-card pn-scroll"><table class="pn-tabela"><thead><tr><th class="num">Pts/CX</th><th>ABC</th><th>Produto</th><th>Linha</th><th class="num">Código</th></tr></thead><tbody><tr><td class="num pn-pts">10</td><td><span class="pn-abc C">C</span></td><td>PIPOCA PRATIC LEVE MANTEIGA 20X40G</td><td class="pn-eq">PIPOCA</td><td class="num pn-eq">33851</td></tr><tr><td class="num pn-pts">10</td><td><span class="pn-abc C">C</span></td><td>PIPOCA PRATIC LEVE NATURAL 20X40G</td><td class="pn-eq">PIPOCA</td><td class="num pn-eq">33850</td></tr><tr><td class="num pn-pts">9</td><td><span class="pn-abc C">C</span></td><td>BATATA OND PRATIC LEVE NATURAL 12X170G</td><td class="pn-eq">ONDULADA</td><td class="num pn-eq">34959</td></tr><tr><td class="num pn-pts">9</td><td><span class="pn-abc C">C</span></td><td>BATATA RUSTICA PRATIC LEVE 12X170G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">34960</td></tr><tr><td class="num pn-pts">8</td><td><span class="pn-abc C">C</span></td><td>BATATA PALHA LANCHE PRATIC LEVE 16X400G</td><td class="pn-eq">PALHA</td><td class="num pn-eq">96201</td></tr><tr><td class="num pn-pts">8</td><td><span class="pn-abc C">C</span></td><td>BATATA RUSTICA PRATIC LEVE BACON 20X80G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">100110</td></tr><tr><td class="num pn-pts">8</td><td><span class="pn-abc C">C</span></td><td>PIPOCA PRATIC LEVE DOCE LEVEMENTE SALGADA 20X60G</td><td class="pn-eq">PIPOCA</td><td class="num pn-eq">100111</td></tr><tr><td class="num pn-pts">7</td><td><span class="pn-abc B">B</span></td><td>BATATA RUSTICA LISA PRATIC LEVE 20X80G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">45347</td></tr><tr><td class="num pn-pts">7</td><td><span class="pn-abc C">C</span></td><td>BATATA RUSTICA PRATIC LEVE 20X40G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">88623</td></tr><tr><td class="num pn-pts">6</td><td><span class="pn-abc B">B</span></td><td>BATATA RUSTICA PRATIC LEVE CEBOLA SALSA 20X80G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">100109</td></tr><tr><td class="num pn-pts">5</td><td><span class="pn-abc B">B</span></td><td>BATATA RUST PRATIC LEVE KETCHUP 20X80G</td><td class="pn-eq">RUSTICA</td><td class="num pn-eq">39723</td></tr><tr><td class="num pn-pts">4</td><td><span class="pn-abc B">B</span></td><td>BATATA OND PRATIC LEVE BACON 20X40G</td><td class="pn-eq">ONDULADA</td><td class="num pn-eq">27319</td></tr><tr><td class="num pn-pts">4</td><td><span class="pn-abc A">A</span></td><td>BATATA PALHA PRATIC LEVE PREMIUM 24X75G</td><td class="pn-eq">PALHA</td><td class="num pn-eq">27323</td></tr><tr><td class="num pn-pts">2</td><td><span class="pn-abc A">A</span></td><td>BATATA OND PRATIC LEVE CEBOLA SALSA 20X40G</td><td class="pn-eq">ONDULADA</td><td class="num pn-eq">27320</td></tr><tr><td class="num pn-pts">2</td><td><span class="pn-abc A">A</span></td><td>BATATA OND PRATIC LEVE CHURRASCO 20X40G</td><td class="pn-eq">ONDULADA</td><td class="num pn-eq">27321</td></tr><tr><td class="num pn-pts">1</td><td><span class="pn-abc A">A</span></td><td>BATATA OND PRATIC LEVE NATURAL 20X40G</td><td class="pn-eq">ONDULADA</td><td class="num pn-eq">27322</td></tr></tbody></table></div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>Positivação por vendedor</h2>
+    <p class="pn-lead">A carteira tem 1440 clientes ativos e só 27,6% compram Pratic Leve hoje. Esse é o maior espaço da campanha.</p>
+    <div class="pn-card"><div class="pn-legenda"><span><i class="pn-chip" style="background:var(--azul)"></i>já atinge a meta</span><span><i class="pn-chip" style="background:var(--laranja)"></i>abaixo da meta</span><span><i class="pn-chip" style="background:var(--laranja);width:2px;height:13px;border-radius:1px"></i>meta de 45% da carteira</span></div><div class="pn-scroll"><table class="pn-tabela"><thead><tr><th>Vendedor</th><th>Positivação da carteira</th><th class="num">%</th><th class="num">Clientes</th></tr></thead><tbody><tr><td><div class="pn-nome">ARQUIMEDES NUNES BEZERRA</div><div class="pn-eq">4 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra"><span style="width:75.0%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>75,0%</b></td><td class="num">3</td></tr><tr><td><div class="pn-nome">FABIO TELES DALTRO</div><div class="pn-eq">87 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra"><span style="width:54.0%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>54,0%</b></td><td class="num">47</td></tr><tr><td><div class="pn-nome">ANDRE JOSE DE SOUZA</div><div class="pn-eq">100 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra"><span style="width:46.0%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>46,0%</b></td><td class="num">46</td></tr><tr><td><div class="pn-nome">MARCOS ANTONIO DE JESUS VIANA</div><div class="pn-eq">133 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:41.4%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>41,4%</b></td><td class="num">55</td></tr><tr><td><div class="pn-nome">ILENILDO JUNIOR MELO</div><div class="pn-eq">76 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:40.8%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>40,8%</b></td><td class="num">31</td></tr><tr><td><div class="pn-nome">JOANDERSON MEDRADE DOS SANTOS</div><div class="pn-eq">111 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:39.6%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>39,6%</b></td><td class="num">44</td></tr><tr><td><div class="pn-nome">GINALDO COSTA SANTOS</div><div class="pn-eq">126 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:35.7%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>35,7%</b></td><td class="num">45</td></tr><tr><td><div class="pn-nome">VIVIANE DOS SANTOS</div><div class="pn-eq">138 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:33.3%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>33,3%</b></td><td class="num">46</td></tr><tr><td><div class="pn-nome">SALLANO VITOR DA HORA SANTOS</div><div class="pn-eq">84 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:32.1%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>32,1%</b></td><td class="num">27</td></tr><tr><td><div class="pn-nome">ANSELMO CERQUEIRA CARVALHO</div><div class="pn-eq">71 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:31.0%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>31,0%</b></td><td class="num">22</td></tr><tr><td><div class="pn-nome">JOSE LEONARDO MENEZES SANTOS</div><div class="pn-eq">54 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:18.5%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>18,5%</b></td><td class="num">10</td></tr><tr><td><div class="pn-nome">ANA CLEA DE JESUS NASCIMENTO</div><div class="pn-eq">74 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:8.1%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>8,1%</b></td><td class="num">6</td></tr><tr><td><div class="pn-nome">EDINALDO CAMPOS DE OLIVEIRA</div><div class="pn-eq">98 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:6.1%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>6,1%</b></td><td class="num">6</td></tr><tr><td><div class="pn-nome">RIVALDO DA CRUZ SOARES FILHO</div><div class="pn-eq">65 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:4.6%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>4,6%</b></td><td class="num">3</td></tr><tr><td><div class="pn-nome">LUCAS SOUZA ALVES</div><div class="pn-eq">148 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:3.4%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>3,4%</b></td><td class="num">5</td></tr><tr><td><div class="pn-nome">MICHELLE HORA XAVIER</div><div class="pn-eq">92 clientes na carteira</div></td><td class="pn-barra-cel"><div class="pn-pos-wrap"><div class="pn-barra laranja"><span style="width:3.3%"></span></div><div class="pn-meta-marca" style="left:45.0%"></div></div></td><td class="num"><b>3,3%</b></td><td class="num">3</td></tr></tbody></table></div></div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>Ranking</h2>
+    <p class="pn-lead">Ordenado por pontos. A coluna Prêmio mostra quem está acima do corte de 40% de positivação.</p>
+    <div class="pn-card pn-scroll"><table class="pn-tabela"><thead><tr><th></th><th>Vendedor</th><th>Pontos</th><th class="num">Total</th><th class="num">Positivados</th><th class="num" style="white-space:nowrap">% Pos.</th><th>Prêmio</th></tr></thead><tbody><tr><td class="pn-pos top">1</td><td><div class="pn-nome">FABIO TELES DALTRO</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:100.0%"></span></div></td><td class="num"><b>6.168</b></td><td class="num">47 / 87</td><td class="num">54,0%</td><td><span class="pn-tag ok">apto</span></td></tr><tr><td class="pn-pos top">2</td><td><div class="pn-nome">GINALDO COSTA SANTOS</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:88.4%"></span></div></td><td class="num"><b>5.452</b></td><td class="num">45 / 126</td><td class="num">35,7%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos top">3</td><td><div class="pn-nome">ANDRE JOSE DE SOUZA</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:70.9%"></span></div></td><td class="num"><b>4.376</b></td><td class="num">46 / 100</td><td class="num">46,0%</td><td><span class="pn-tag ok">apto</span></td></tr><tr><td class="pn-pos">4</td><td><div class="pn-nome">MARCOS ANTONIO DE JESUS VIANA</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:62.3%"></span></div></td><td class="num"><b>3.840</b></td><td class="num">55 / 133</td><td class="num">41,4%</td><td><span class="pn-tag ok">apto</span></td></tr><tr><td class="pn-pos">5</td><td><div class="pn-nome">JOANDERSON MEDRADE DOS SANTOS</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:54.6%"></span></div></td><td class="num"><b>3.366</b></td><td class="num">44 / 111</td><td class="num">39,6%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">6</td><td><div class="pn-nome">VIVIANE DOS SANTOS</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:51.6%"></span></div></td><td class="num"><b>3.182</b></td><td class="num">46 / 138</td><td class="num">33,3%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">7</td><td><div class="pn-nome">ANSELMO CERQUEIRA CARVALHO</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:48.1%"></span></div></td><td class="num"><b>2.964</b></td><td class="num">22 / 71</td><td class="num">31,0%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">8</td><td><div class="pn-nome">ILENILDO JUNIOR MELO</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:46.6%"></span></div></td><td class="num"><b>2.874</b></td><td class="num">31 / 76</td><td class="num">40,8%</td><td><span class="pn-tag ok">apto</span></td></tr><tr><td class="pn-pos">9</td><td><div class="pn-nome">LUCAS SOUZA ALVES</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:35.8%"></span></div></td><td class="num"><b>2.211</b></td><td class="num">5 / 148</td><td class="num">3,4%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">10</td><td><div class="pn-nome">ARQUIMEDES NUNES BEZERRA</div><div class="pn-eq">KEY ACCOUNT</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:31.0%"></span></div></td><td class="num"><b>1.909</b></td><td class="num">3 / 4</td><td class="num">75,0%</td><td><span class="pn-tag ok">apto</span></td></tr><tr><td class="pn-pos">11</td><td><div class="pn-nome">SALLANO VITOR DA HORA SANTOS</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:30.2%"></span></div></td><td class="num"><b>1.861</b></td><td class="num">27 / 84</td><td class="num">32,1%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">12</td><td><div class="pn-nome">RIVALDO DA CRUZ SOARES FILHO</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:17.9%"></span></div></td><td class="num"><b>1.107</b></td><td class="num">3 / 65</td><td class="num">4,6%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">13</td><td><div class="pn-nome">JOSE LEONARDO MENEZES SANTOS</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:9.3%"></span></div></td><td class="num"><b>572</b></td><td class="num">10 / 54</td><td class="num">18,5%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">14</td><td><div class="pn-nome">ANA CLEA DE JESUS NASCIMENTO</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:8.6%"></span></div></td><td class="num"><b>530</b></td><td class="num">6 / 74</td><td class="num">8,1%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">15</td><td><div class="pn-nome">EDINALDO CAMPOS DE OLIVEIRA</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:7.4%"></span></div></td><td class="num"><b>455</b></td><td class="num">6 / 98</td><td class="num">6,1%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr><tr><td class="pn-pos">16</td><td><div class="pn-nome">MICHELLE HORA XAVIER</div><div class="pn-eq">ITABAIANA</div></td><td class="pn-barra-cel"><div class="pn-barra"><span style="width:7.2%"></span></div></td><td class="num"><b>445</b></td><td class="num">3 / 92</td><td class="num">3,3%</td><td><span class="pn-tag no">abaixo do corte</span></td></tr></tbody></table></div>
+  </div>
+
+  <div class="pn-sec">
+    <h2>Premiação</h2>
+    <p class="pn-lead">Viagem prevista para Março/2027, com acompanhante em todas as faixas.</p>
+    <div class="pn-premios"><div class="pn-premio destaque"><h3>1º lugar – Campeão Geral</h3><p>Resort 4 diárias, all inclusive, com acompanhante</p></div><div class="pn-premio"><h3>2º lugar – Vice-Campeão</h3><p>Resort 3 diárias, all inclusive, com acompanhante</p></div><div class="pn-premio"><h3>3º lugar</h3><p>Resort 2 diárias, all inclusive, com acompanhante</p></div><div class="pn-premio"><h3>Destaque Positivação</h3><p>Resort 2 diárias, all inclusive, com acompanhante</p></div><div class="pn-premio"><h3>Destaque Linha Pipoca</h3><p>Resort 2 diárias, all inclusive, com acompanhante</p></div></div>
+  </div>
+
+  <div class="pn-sec">
+    <div class="pn-nota"><b>Leia antes de divulgar.</b> O painel esta carregado com <b>1 mês de histórico (2026-08)</b>, extraído do relatório 322 &ndash; Venda Por Departamento, por RCA, fornecedor 935 PALHA. A média de 4 meses pedida precisa dos relatórios de maio, junho e julho/2026 &ndash; basta acrescentar as linhas em <code>dados/historico_mensal.csv</code> e rodar o gerador de novo, que todas as metas se recalculam sozinhas. Os pontos do ranking estão <b>projetados</b> sobre o volume do baseline: o bônus de mix completo e o de Pipoca só entram quando existir a venda por SKU &times; vendedor.</div>
+  </div>
+
+  <p class="pn-rodape">Gerado por gerador_campanha_itabaiana.py &middot; fonte: relatório 322 &ndash; Venda Por Departamento (por RCA), fornecedor 935 PALHA INDÚSTRIA, e mix Pratic Leve da base ABC. Estrutura baseada no Desafio Ducamp 2026.</p>
+
+</div></div>

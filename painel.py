@@ -37,6 +37,7 @@ def primeiro_nome(nome):
 
 
 CSS = """
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 .pn {
   color-scheme: light;
@@ -57,7 +58,9 @@ CSS = """
   --radius: 10px;
   background: var(--surface-0);
   color: var(--text-1);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fonte-display: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fonte-texto: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--fonte-texto);
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -111,7 +114,7 @@ CSS = """
   margin-bottom: 26px;
 }
 .pn-kicker { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; opacity: .82; margin: 0 0 8px; font-weight: 600; }
-.pn-hero h1 { margin: 0 0 6px; font-size: 30px; line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+.pn-hero h1 { margin: 0 0 6px; font-family: var(--fonte-display); font-size: 32px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em; text-wrap: balance; }
 .pn-hero .pn-sub { margin: 0; font-size: 15px; opacity: .9; }
 .pn-premio-tag {
   display: inline-block; margin-top: 16px; padding: 8px 15px;
@@ -138,7 +141,7 @@ CSS = """
 .pn-meta-rot { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); font-weight: 600; margin-bottom: 12px; }
 .pn-meta-de { font-size: 13px; color: var(--text-2); }
 .pn-meta-de b { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-1); }
-.pn-meta-para { font-size: 27px; font-weight: 700; letter-spacing: -.02em; color: var(--laranja); font-variant-numeric: tabular-nums; margin: 2px 0 3px; }
+.pn-meta-para { font-family: var(--fonte-display); font-size: 28px; font-weight: 800; letter-spacing: -.02em; color: var(--laranja); font-variant-numeric: tabular-nums; margin: 2px 0 3px; }
 .pn-meta-delta { font-size: 13px; color: var(--text-2); }
 
 /* ---------- barras ---------- */
@@ -150,7 +153,7 @@ CSS = """
 .pn-tabela th.num, .pn-tabela td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .pn-tabela td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 .pn-tabela tr:last-child td { border-bottom: none; }
-.pn-pos { font-weight: 700; color: var(--text-3); width: 34px; font-variant-numeric: tabular-nums; }
+.pn-pos { font-family: var(--fonte-display); font-weight: 800; font-size: 16px; color: var(--text-3); width: 34px; font-variant-numeric: tabular-nums; }
 .pn-pos.top { color: var(--ouro); }
 .pn-nome { font-weight: 600; }
 .pn-eq { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; }
@@ -182,13 +185,13 @@ CSS = """
 .pn-abc.A { background: var(--azul-fraco); color: var(--azul); }
 .pn-abc.B { background: var(--surface-2); color: var(--text-2); }
 .pn-abc.C { background: var(--laranja-fraco); color: var(--laranja); }
-.pn-pts { font-weight: 700; color: var(--laranja); font-variant-numeric: tabular-nums; }
+.pn-pts { font-family: var(--fonte-display); font-weight: 800; font-size: 15px; color: var(--laranja); font-variant-numeric: tabular-nums; }
 
 /* ---------- premiacao ---------- */
 .pn-premios { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
 .pn-premio { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; }
 .pn-premio.destaque { border-color: var(--ouro); border-width: 2px; }
-.pn-premio h3 { margin: 0 0 6px; font-size: 15px; font-weight: 700; }
+.pn-premio h3 { margin: 0 0 6px; font-family: var(--fonte-display); font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
 .pn-premio p { margin: 0; font-size: 14px; color: var(--text-2); }
 
 /* ---------- regras ---------- */
@@ -205,6 +208,8 @@ CSS = """
 .pn-rodape { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 12.5px; color: var(--text-3); }
 
 .pn-scroll { overflow-x: auto; }
+.pn :focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 3px; }
+@media (prefers-reduced-motion: reduce) { .pn * { animation: none !important; transition: none !important; } }
 @media (max-width: 620px) {
   .pn-hero { padding: 24px 20px; }
   .pn-hero h1 { font-size: 24px; }
